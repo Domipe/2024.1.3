@@ -1,0 +1,42 @@
+select FirstName, LastName, City, State
+from Person left join Address
+on Person.PersonId = Address.PersonId
+;
+
+
+SELECT
+    a.`name` AS 'Employee'
+FROM
+		Emloyee AS a,
+		Emloyee AS b
+WHERE
+    a.managerId = b.id
+        AND a.salary > b.salary
+;
+
+select Email, count(Email) as num
+from People
+group by Email;
+
+SELECT Customers.`name`
+FROM Customers
+LEFT JOIN Orders ON Customers.Id = Orders.CustomerId
+WHERE Orders.customerId IS NULL
+
+DELETE FROM Person_delete
+WHERE id NOT IN(
+		SELECT MIN(id)
+		FROM Person_delete
+		GROUP BY email
+		);
+
+SELECT t1.id
+FROM Weather t1
+JOIN Weather t2
+ON t1.recordDate = DATE_ADD(t2.recordDate, INTERVAL 1 DAY)
+WHERE t1.temperature > t2.temperature;
+
+select player_id,
+min(event_date) as first_login
+from Activity
+group by player_id
